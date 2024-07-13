@@ -4,7 +4,7 @@ interface ActionInputFields {
   required?: boolean; // Optional, defaults to false if not provided
 }
 
-enum ActionLinkType {
+export enum ActionLinkType {
   TX = "tx",
   SIGNATURE = "signature",
   LINK = "link",
@@ -20,7 +20,7 @@ interface ActionLink {
   inputFields?: ActionInputFields[]; // Action parameters
 }
 
-interface EVMAction {
+export interface EVMAction {
   title: string; // Title of the EVM Action
   description: string; // Description of the EVM Action
   image: string; // EVM Action image URL
