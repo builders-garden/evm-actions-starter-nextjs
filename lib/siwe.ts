@@ -1,3 +1,6 @@
+import { generateSiweNonce } from "viem/siwe";
+import { appURL } from "./utils";
+
 export interface SIWEMessage {
   domain: string; // The domain that the message is intended for
   address: string; // The Ethereum address of the user
@@ -12,3 +15,16 @@ export interface SIWEMessage {
   requestId?: string; // A unique identifier for the login session
   resources?: string[]; // An array of URIs for resources such as terms of service or privacy policy documents
 }
+
+export const generateSIWEMessage = (address: string, chainId: number) => {
+  const nonce = generateSiweNonce();
+  return {
+    domain: `${appURL().replace("https://", "")}`,
+    address,
+    uri: appURL(),
+    version: "1",
+    chainId,
+    nonce,
+    issuedAt: new Date().toISOString(),
+  };
+};

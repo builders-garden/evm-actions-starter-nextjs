@@ -21,8 +21,8 @@ export const GET = async (req: NextRequest) => {
         type: ActionLinkType.SIGNATURE,
       },
       {
-        targetUrl: `${appURL()}/api/one-click-login`,
-        postUrl: appURL(), // this will be a GET HTTP call
+        targetUrl: `${appURL()}/api/action-login`,
+        postUrl: `${appURL()}/api/action-login/success`,
         label: "1-click login",
         type: ActionLinkType.ONE_CLICK_LOGIN,
       },
