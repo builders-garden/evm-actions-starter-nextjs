@@ -6,7 +6,7 @@ export const GET = async (req: NextRequest) => {
   const evmActionMetadata: EVMAction = {
     title: "Sample EVM Action",
     description: "This is a sample EVM Action",
-    image: "https://placehold.co/955x500",
+    image: `${appURL()}/landing.png`,
     links: [
       {
         targetUrl: `${appURL()}/api/tx`,
