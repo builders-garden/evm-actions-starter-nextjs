@@ -22,7 +22,7 @@ export const GET = async (req: NextRequest) => {
       },
       {
         targetUrl: `${appURL()}/api/one-click-login`,
-        loginUrl: appURL(), // this will be a GET HTTP call
+        postUrl: appURL(), // this will be a GET HTTP call
         label: "1-click login",
         type: ActionLinkType.ONE_CLICK_LOGIN,
       },

@@ -21,13 +21,13 @@ export const POST = async (req: NextRequest) => {
     "0x036CbD53842c5426634e7929541eC2318f3dCF7e";
 
   return NextResponse.json({
-    chainId: `eip155:${baseSepolia.id}`, // Base Mainnet 8453
-    method: "eth_sendTransaction",
-    params: {
-      abi: erc20Abi,
-      to: BASE_SEPOLIA_USDC_ADDRESS,
-      data: calldata,
-      value: "0",
-    },
+    transactions: [
+      {
+        chainId: `${baseSepolia.id}`,
+        to: BASE_SEPOLIA_USDC_ADDRESS,
+        data: calldata,
+        value: "0",
+      },
+    ],
   });
 };
