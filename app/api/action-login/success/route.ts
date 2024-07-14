@@ -4,12 +4,12 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const POST = async (req: NextRequest) => {
   const body = await req.json();
-  const { signedMessage, messageToSign, address } = body;
+  const { signedMessage, messageToSign, address, chain } = body;
   const res = await verifyWithDynamic({
     signedMessage: signedMessage!,
     messageToSign,
     publicWalletAddress: address!,
-    chain: ChainEnum.EVM,
+    chain: chain as ChainEnum,
   });
   if (res.error) {
     return NextResponse.json(
@@ -22,6 +22,6 @@ export const POST = async (req: NextRequest) => {
   const jwt = res.result.jwt;
   const minJwt = res.result.minifiedJwt;
   return NextResponse.json({
-    url: `${appURL()}?jwt=${jwt}&minJwt=${minJwt}`,
+    url: `${appURL()}/login-success?jwt=${jwt}&minJwt=${minJwt}`,
   });
 };
